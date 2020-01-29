@@ -1,0 +1,47 @@
+
+<ng-container>
+  <div class="movies-list-container" *ngIf="movies.length && !selectedMovie">
+    <div class="page-container d-flex justify-content-end mb-3">
+      <div class="dropdown d-flex justify-self-end" *ngIf="pagesArray">
+        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{currentPage}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a *ngFor="let i of pagesArray" class="dropdown-item" href="#" (click)="pageChanged(i)">
+            {{i}}
+          </a>
+        </div>
+      </div>
+    </div>
+    <table class="table  table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Poster</th>
+            <th scope="col">Title</th>
+            <th scope="col">Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movie of movies; let i = index;">
+            <th scope="row">{{i + 1}}</th>
+            <td>
+              <img class="movie-image" [src]="movie.image || '../../../../../assets/no-image-available.png'">
+            </td>
+            <td>
+              <button type="button" class="movie-title-text ml-2 btn btn-link" (click)="selectedMovie = movie">{{movie.title}}</button>
+            </td>
+            <td>{{movie.year}}</td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+  <div *ngIf="selectedMovie">
+    <div class="d-flex justify-content-end mb-2">
+      <button type="button" class="btn btn-light" (click)="selectedMovie = null">Go Back To List</button>
+    </div>
+    <movie-details [movieImdbId]="selectedMovie.imdbId"></movie-details>
+  </div>
+</ng-container>
+
+ 

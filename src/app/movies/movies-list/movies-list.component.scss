@@ -1,0 +1,13 @@
+.movies-list-container{
+    .dropdown-menu {
+        &.show {
+            max-width: 50px;
+            min-width: 50px;
+        }
+    }
+    table {
+        .movie-image {
+            height: 50px;
+        }
+    }
+}

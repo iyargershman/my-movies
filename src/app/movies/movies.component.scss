@@ -1,0 +1,35 @@
+.movies-container {
+    .header {
+        background-color: #dddddd;
+        .title-div {
+            white-space: nowrap;
+            flex: 0.5;
+            div {
+                font-size: 28pt;
+            }
+            img {
+                width: 30px;
+                height: 30px;
+                transform: rotate(350deg);
+            }
+        }
+    }
+    .search-container {    
+        min-height: 58px;
+        .year-input {
+            width: 100px;
+        }
+        .form-error {
+            color: red;
+            font-weight: bold;
+            font-size: 12px;
+        }
+    }
+    .error-container {
+        border-radius: 12px;
+        border: 1px solid #E8E8E8;
+        background-color: #FFFFFF;
+        font-weight: 500;
+        font-size: 20px;
+    }
+}

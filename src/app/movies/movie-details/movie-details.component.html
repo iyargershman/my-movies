@@ -1,0 +1,26 @@
+<div class="movie-details-container d-flex justify-content-center" *ngIf="movie">
+    <div class="card mb-3" style="max-width: 70%;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img [src]="movie.image || '../../../../../assets/no-image-available.png'" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <h4 class="card-title">{{movie.title}}</h4>
+              <div *ngIf="movie.imdbRating" class="card-title font-weight-bold movie-rating">
+                {{movie.imdbRating}}<span>/10</span>
+              </div>
+            </div>
+            <p class="card-text">
+              <small class="text-muted">{{movie.year}}, {{movie.country}}</small>
+            </p>
+            <p class="card-text">
+              {{movie.description ? movie.description : 'No Description Available'}}
+            </p>
+            <a href="#" class="btn btn-primary" (click)="goToImdb()">View Movie On IMDB</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

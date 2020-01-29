@@ -1,0 +1,30 @@
+<div class="movies-container">
+  <div class="header p-3 d-flex flex-wrap">
+    <div class="title-div d-flex align-items-center mr-4">
+      <div class="font-weight-bold mr-1">My Movies</div>
+      <img src="../../assets/movie.png">
+    </div>
+    <div class="search-container d-flex align-items-center">
+      <form class="form-inline">
+        <div>
+          <input type="text" class="form-control mr-3" (ngModelChange)="checkTitleValid($event)"  placeholder="Title" name="title" [(ngModel)]="title" />
+          <div class="form-error position-absolute">{{formTitleError}}</div>
+        </div>
+        <div>
+          <input type="number" class="form-control mr-4 year-input" (ngModelChange)="checkYearValid($event)" placeholder="Year" name="year" [(ngModel)]="year" />
+          <div class="form-error position-absolute">{{formYearError}}</div>
+        </div>
+        <button type="button" class="btn btn-primary btn-sm" (click)="search()" [disabled]="formTitleError || formYearError">Find</button>
+      </form>
+    </div>
+  </div>
+  
+  <div class="result-container p-3">
+    <movies-list *ngIf="movies && movies.length" [movies]="movies" (pageSelected)="getMoviesPerPage($event)"></movies-list>
+    <div *ngIf="error" class="d-flex justify-content-center">
+      <div class="error-container p-3 mt-3">
+        <span>{{error}}</span>
+      </div>
+    </div>
+  </div>
+</div>
